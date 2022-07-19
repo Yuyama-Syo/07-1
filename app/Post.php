@@ -8,3 +8,4 @@ class Post extends Model
 {
     //
 }
+
