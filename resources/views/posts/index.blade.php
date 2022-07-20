@@ -4,7 +4,6 @@
         <meta charset="utf-8">
         <title>Blog</title>
         <!-- Fonts -->
-        <link href="utf-8">
     </head>
     <body>
         <h1>Blog Name</h1>
@@ -13,6 +12,9 @@
                <h2 class="title">{{$post->title}}</h2>
                <p class="body">{{$post->body}}</p>
             @endforeach
+        </div>
+        <div class="'paginate">
+            {{$posts->links() }}
         </div>
     </body>
 </html>
