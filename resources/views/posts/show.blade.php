@@ -1,4 +1,7 @@
 <!DOCTYPE HTML>
+@extends('layouts.app')　
+
+@section('content')
 <html lang="{{str_replace("_","_",app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -15,7 +18,7 @@
         <form action="/posts/{{ $post->id }}" id="form_delete" method="post" style="display:inline">
             @csrf
             @method('DELETE')
-            <button type="submit">[<span onclick="return deletePost(this);">delete</span>]</button> 
+            <input onclick="deletePost()" value="delete" type="button"> 
         </form>
         <div class="content">
             <div class="content_post">
@@ -24,10 +27,12 @@
             </div>
         </div>
         <div class="footer">
+            <a href="">{{ $post->category->name }}</a>
+            <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
             <a href="/">戻る</a>
         </div>
         <script>
-        function deletePost(e){
+        function deletePost(){
             'use strict';
             if(confirm('削除すると復元できません．\n本当に削除しますか')){
                 document.getElementById('form_delete').submit();
@@ -36,3 +41,4 @@
         </script>
     </body>
 </html>
+@endsection
